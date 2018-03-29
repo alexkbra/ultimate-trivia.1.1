@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Nivel.
+    -->
+    <changeSet id="20180329212352-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="nivels_id"
+                                 baseTableName="nivel_publicidad"
+                                 constraintName="fk_nivel_publicidad_nivels_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="nivel"/>
+        <addForeignKeyConstraint baseColumnNames="publicidads_id"
+                                 baseTableName="nivel_publicidad"
+                                 constraintName="fk_nivel_publicidad_publicidads_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="publicidad"/>
+        
+        <addForeignKeyConstraint baseColumnNames="nivels_id"
+                                 baseTableName="nivel_pregunta"
+                                 constraintName="fk_nivel_pregunta_nivels_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="nivel"/>
+        <addForeignKeyConstraint baseColumnNames="preguntas_id"
+                                 baseTableName="nivel_pregunta"
+                                 constraintName="fk_nivel_pregunta_preguntas_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pregunta"/>
+        
+    </changeSet>
+</databaseChangeLog>

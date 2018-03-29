@@ -1,0 +1,30 @@
+{
+    "triviaApp": {
+        "empresas" : {
+            "home": {
+                "title": "Empresas",
+                "createLabel": "Create a new Empresas",
+                "createOrEditLabel": "Create or edit a Empresas"
+            },
+            "created": "A new Empresas is created with identifier {{ param }}",
+            "updated": "A Empresas is updated with identifier {{ param }}",
+            "deleted": "A Empresas is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Empresas {{ id }}?"
+            },
+            "detail": {
+                "title": "Empresas"
+            },
+            "razonSocial": "Razon Social",
+            "nit": "Nit",
+            "digitoVerificacion": "Digito Verificacion",
+            "telefono": "Telefono",
+            "telefonoContacto": "Telefono Contacto",
+            "email": "Email",
+            "direccion": "Direccion",
+            "paginaWeb": "Pagina Web",
+            "fechaRegistro": "Fecha Registro",
+            "publicidad": "Publicidad"
+        }
+    }
+}

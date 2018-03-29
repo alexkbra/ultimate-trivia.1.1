@@ -1,0 +1,39 @@
+
+<div *ngIf="expedicionuser">
+    <h2><span jhiTranslate="triviaApp.expedicionuser.detail.title">Expedicionuser</span> {{expedicionuser.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="triviaApp.expedicionuser.nickname">Nickname</span></dt>
+        <dd>
+            <span>{{expedicionuser.nickname}}</span>
+        </dd>
+        <dt><span jhiTranslate="triviaApp.expedicionuser.fechaRegistro">Fecha Registro</span></dt>
+        <dd>
+            <span>{{expedicionuser.fechaRegistro | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="triviaApp.expedicionuser.userid">Userid</span></dt>
+        <dd>
+            {{expedicionuser.useridId}}
+        </dd>
+        <dt><span jhiTranslate="triviaApp.expedicionuser.expedicion">Expedicion</span></dt>
+        <dd>
+            <div *ngIf="expedicionuser.expedicionId">
+                <a [routerLink]="['/expedicion', expedicionuser.expedicionId]">{{expedicionuser.expedicionNombre}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'expedicionuser/'+ expedicionuser.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

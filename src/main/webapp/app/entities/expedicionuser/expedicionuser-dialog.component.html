@@ -1,0 +1,78 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myExpedicionuserLabel" jhiTranslate="triviaApp.expedicionuser.home.createOrEditLabel">Create or edit a Expedicionuser</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!expedicionuser.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="expedicionuser.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="triviaApp.expedicionuser.nickname" for="field_nickname">Nickname</label>
+            <input type="text" class="form-control" name="nickname" id="field_nickname"
+                [(ngModel)]="expedicionuser.nickname" required />
+            <div [hidden]="!(editForm.controls.nickname?.dirty && editForm.controls.nickname?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nickname?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="triviaApp.expedicionuser.fechaRegistro" for="field_fechaRegistro">Fecha Registro</label>
+            <div class="input-group">
+                <input id="field_fechaRegistro" type="text" class="form-control" name="fechaRegistro" ngbDatepicker  #fechaRegistroDp="ngbDatepicker" [(ngModel)]="expedicionuser.fechaRegistro"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="fechaRegistroDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.fechaRegistro?.dirty && editForm.controls.fechaRegistro?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.fechaRegistro?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div [hidden]="!(editForm.controls.detalleexpedicionuser?.dirty && editForm.controls.detalleexpedicionuser?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.detalleexpedicionuser?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="triviaApp.expedicionuser.userid" for="field_userid">Userid</label>
+            <select class="form-control" id="field_userid" name="userid" [(ngModel)]="expedicionuser.useridId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="triviaApp.expedicionuser.expedicion" for="field_expedicion">Expedicion</label>
+            <select class="form-control" id="field_expedicion" name="expedicion" [(ngModel)]="expedicionuser.expedicionId"  required>
+                <option *ngIf="!editForm.value.expedicion" [ngValue]="null" selected></option>
+                <option [ngValue]="expedicionOption.id" *ngFor="let expedicionOption of expedicions; trackBy: trackExpedicionById">{{expedicionOption.nombre}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.expedicion?.dirty && editForm.controls.expedicion?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.expedicion?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

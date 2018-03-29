@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span jhiTranslate="triviaApp.empresas.home.title">Empresas</span>
+        <button class="btn btn-primary float-right jh-create-entity create-empresas" [routerLink]="['/', { outlets: { popup: ['empresas-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="triviaApp.empresas.home.createLabel">
+            Create new Empresas
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="empresas">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="razonSocial"><span jhiTranslate="triviaApp.empresas.razonSocial">Razon Social</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nit"><span jhiTranslate="triviaApp.empresas.nit">Nit</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="digitoVerificacion"><span jhiTranslate="triviaApp.empresas.digitoVerificacion">Digito Verificacion</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="telefono"><span jhiTranslate="triviaApp.empresas.telefono">Telefono</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="telefonoContacto"><span jhiTranslate="triviaApp.empresas.telefonoContacto">Telefono Contacto</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="email"><span jhiTranslate="triviaApp.empresas.email">Email</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="direccion"><span jhiTranslate="triviaApp.empresas.direccion">Direccion</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="paginaWeb"><span jhiTranslate="triviaApp.empresas.paginaWeb">Pagina Web</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fechaRegistro"><span jhiTranslate="triviaApp.empresas.fechaRegistro">Fecha Registro</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let empresas of empresas ;trackBy: trackId">
+                <td><a [routerLink]="['../empresas', empresas.id ]">{{empresas.id}}</a></td>
+                <td>{{empresas.razonSocial}}</td>
+                <td>{{empresas.nit}}</td>
+                <td>{{empresas.digitoVerificacion}}</td>
+                <td>{{empresas.telefono}}</td>
+                <td>{{empresas.telefonoContacto}}</td>
+                <td>{{empresas.email}}</td>
+                <td>{{empresas.direccion}}</td>
+                <td>{{empresas.paginaWeb}}</td>
+                <td>{{empresas.fechaRegistro | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../empresas', empresas.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'empresas/'+ empresas.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'empresas/'+ empresas.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="empresas && empresas.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

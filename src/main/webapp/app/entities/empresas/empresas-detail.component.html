@@ -1,0 +1,57 @@
+
+<div *ngIf="empresas">
+    <h2><span jhiTranslate="triviaApp.empresas.detail.title">Empresas</span> {{empresas.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="triviaApp.empresas.razonSocial">Razon Social</span></dt>
+        <dd>
+            <span>{{empresas.razonSocial}}</span>
+        </dd>
+        <dt><span jhiTranslate="triviaApp.empresas.nit">Nit</span></dt>
+        <dd>
+            <span>{{empresas.nit}}</span>
+        </dd>
+        <dt><span jhiTranslate="triviaApp.empresas.digitoVerificacion">Digito Verificacion</span></dt>
+        <dd>
+            <span>{{empresas.digitoVerificacion}}</span>
+        </dd>
+        <dt><span jhiTranslate="triviaApp.empresas.telefono">Telefono</span></dt>
+        <dd>
+            <span>{{empresas.telefono}}</span>
+        </dd>
+        <dt><span jhiTranslate="triviaApp.empresas.telefonoContacto">Telefono Contacto</span></dt>
+        <dd>
+            <span>{{empresas.telefonoContacto}}</span>
+        </dd>
+        <dt><span jhiTranslate="triviaApp.empresas.email">Email</span></dt>
+        <dd>
+            <span>{{empresas.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="triviaApp.empresas.direccion">Direccion</span></dt>
+        <dd>
+            <span>{{empresas.direccion}}</span>
+        </dd>
+        <dt><span jhiTranslate="triviaApp.empresas.paginaWeb">Pagina Web</span></dt>
+        <dd>
+            <span>{{empresas.paginaWeb}}</span>
+        </dd>
+        <dt><span jhiTranslate="triviaApp.empresas.fechaRegistro">Fecha Registro</span></dt>
+        <dd>
+            <span>{{empresas.fechaRegistro | date:'mediumDate'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'empresas/'+ empresas.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

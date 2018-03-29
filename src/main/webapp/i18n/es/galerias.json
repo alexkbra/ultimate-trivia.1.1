@@ -1,0 +1,23 @@
+{
+    "triviaApp": {
+        "galerias" : {
+            "home": {
+                "title": "Galerias",
+                "createLabel": "Crear nuevo Galerias",
+                "createOrEditLabel": "Crear o editar Galerias"
+            },
+            "created": "Un nuevo Galerias ha sido creado con el identificador {{ param }}",
+            "updated": "Un Galerias ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Galerias ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Galerias {{ id }}?"
+            },
+            "detail": {
+                "title": "Galerias"
+            },
+            "uri": "Uri",
+            "tipoArchivo": "Tipo Archivo",
+            "publicidad": "Publicidad"
+        }
+    }
+}

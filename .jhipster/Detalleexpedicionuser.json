@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "pregunta",
+            "otherEntityName": "pregunta",
+            "otherEntityField": "cortaDescripcion"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "expedicionuser",
+            "otherEntityName": "expedicionuser",
+            "otherEntityField": "nickname"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "fechaRespueta",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "respuesta",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180329221930",
+    "entityTableName": "detalleexpedicionuser",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

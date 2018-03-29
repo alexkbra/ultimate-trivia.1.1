@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipValidateRules": "required",
+            "relationshipName": "expedicionuser",
+            "otherEntityName": "expedicionuser",
+            "otherEntityRelationshipName": "expedicion"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "expedicion",
+            "relationshipName": "cuestionario",
+            "otherEntityName": "cuestionario",
+            "otherEntityField": "nombre",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 10,
+            "fieldValidateRulesMaxlength": 100
+        }
+    ],
+    "changelogDate": "20180329212349",
+    "entityTableName": "expedicion",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

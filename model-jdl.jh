@@ -1,0 +1,94 @@
+entity Empresas {
+	razonSocial String required minlength(4) maxlength(200),
+	nit Long required min(9) max(15),
+	digitoVerificacion Integer required min(1) max(2),
+	telefono  Long required min(7) max(15),
+	telefonoContacto Long min(7) max(15),
+	email String maxlength(100) pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),
+	direccion String maxlength(500),
+	paginaWeb String maxlength(500), 
+	fechaRegistro LocalDate required  
+}
+
+entity Galerias{
+	uri String required minlength(1) maxlength(500),
+	tipoArchivo TipoArchivo required
+}
+
+enum TipoArchivo {
+    VIDEO, MUSIC, IMAGE
+}
+
+entity Publicidad{
+	titulo String required minlength(4) maxlength(100),
+	descripcion String required minlength(10) maxlength(100),
+    premio_descripcion String required minlength(10) maxlength(100)
+}
+
+entity Expedicion{
+	nombre String required minlength(10) maxlength(100)
+}
+
+entity Expedicionuser{
+	nickname String required,
+	fechaRegistro LocalDate required
+}
+
+entity Detalleexpedicionuser{
+	fechaRespueta Instant required,
+	respuesta Boolean required
+}
+
+entity Cuestionario {
+	nombre String required minlength(4) maxlength(100)
+}
+
+
+entity Nivel{
+	nombre String required minlength(4) maxlength(100),
+	fechaInicio LocalDate required,
+	fechaFinal LocalDate required
+}
+
+enum TipoPregunta {
+    ABIERTAS, UNICARESPUESTA, SELECCIONMULTIPLE
+}
+
+entity Pregunta{
+	cortaDescripcion String required minlength(10) maxlength(200),
+	descripcion String required minlength(10) maxlength(500),
+	pista String required minlength(10) maxlength(500),
+	tipoPregunta TipoPregunta required
+}
+
+
+entity Respuesta{
+	cortaDescripcion String required minlength(10) maxlength(200),
+	descripcion String required minlength(10) maxlength(600)
+}
+
+
+relationship ManyToMany {
+	Nivel{publicidad(titulo)} to Publicidad{nivel(nombre)},
+	Cuestionario{nivel(nombre)} to Nivel{cuestionario(nombre)},
+	Publicidad{galeria(titulo)} to Galerias{publicidad(titulo)},
+	Nivel{pregunta(cortaDescripcion)} to Pregunta{nivel(nombre)},
+	Expedicion{cuestionario(nombre)} to Cuestionario{expedicion(nombre)}
+	
+}
+
+relationship OneToMany {
+	Empresas{publicidad(nombre) required} to Publicidad{empresas(razonSocial) required},
+	Pregunta{respuesta(cortaDescripcion) required} to Respuesta{pregunta(cortaDescripcion) required},
+	Expedicion{expedicionuser(nombre) required} to Expedicionuser{expedicion(nombre) required},
+	Pregunta to Detalleexpedicionuser{pregunta(cortaDescripcion) required},
+	Expedicionuser{detalleexpedicionuser(fechaRespueta) required} to Detalleexpedicionuser{expedicionuser(nickname) required}
+}
+
+relationship ManyToOne{
+	Expedicionuser{userid} to User
+}
+
+dto all with mapstruct
+service all with serviceImpl
+paginate all with pagination

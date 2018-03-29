@@ -1,0 +1,10 @@
+{
+    "triviaApp": {
+        "TipoArchivo" : {
+            "null": "",
+            "VIDEO": "VIDEO",
+            "MUSIC": "MUSIC",
+            "IMAGE": "IMAGE"
+        }
+    }
+}

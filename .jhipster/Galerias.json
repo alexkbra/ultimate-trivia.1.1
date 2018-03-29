@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "publicidad",
+            "otherEntityName": "publicidad",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "galeria"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "uri",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 1,
+            "fieldValidateRulesMaxlength": 500
+        },
+        {
+            "fieldName": "tipoArchivo",
+            "fieldType": "TipoArchivo",
+            "fieldValues": "VIDEO,MUSIC,IMAGE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180329212347",
+    "entityTableName": "galerias",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

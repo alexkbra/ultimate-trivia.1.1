@@ -1,0 +1,73 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipValidateRules": "required",
+            "relationshipName": "respuesta",
+            "otherEntityName": "respuesta",
+            "otherEntityRelationshipName": "pregunta"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "detalleexpedicionuser",
+            "otherEntityName": "detalleexpedicionuser",
+            "otherEntityRelationshipName": "pregunta"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "nivel",
+            "otherEntityName": "nivel",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "pregunta"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "cortaDescripcion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 10,
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 10,
+            "fieldValidateRulesMaxlength": 500
+        },
+        {
+            "fieldName": "pista",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 10,
+            "fieldValidateRulesMaxlength": 500
+        },
+        {
+            "fieldName": "tipoPregunta",
+            "fieldType": "TipoPregunta",
+            "fieldValues": "ABIERTAS,UNICARESPUESTA,SELECCIONMULTIPLE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180329212353",
+    "entityTableName": "pregunta",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

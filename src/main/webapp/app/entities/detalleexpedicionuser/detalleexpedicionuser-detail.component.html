@@ -1,0 +1,41 @@
+
+<div *ngIf="detalleexpedicionuser">
+    <h2><span jhiTranslate="triviaApp.detalleexpedicionuser.detail.title">Detalleexpedicionuser</span> {{detalleexpedicionuser.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="triviaApp.detalleexpedicionuser.fechaRespueta">Fecha Respueta</span></dt>
+        <dd>
+            <span>{{detalleexpedicionuser.fechaRespueta | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="triviaApp.detalleexpedicionuser.respuesta">Respuesta</span></dt>
+        <dd>
+            <span>{{detalleexpedicionuser.respuesta}}</span>
+        </dd>
+        <dt><span jhiTranslate="triviaApp.detalleexpedicionuser.pregunta">Pregunta</span></dt>
+        <dd>
+            <div *ngIf="detalleexpedicionuser.preguntaId">
+                <a [routerLink]="['/pregunta', detalleexpedicionuser.preguntaId]">{{detalleexpedicionuser.preguntaCortaDescripcion}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="triviaApp.detalleexpedicionuser.expedicionuser">Expedicionuser</span></dt>
+        <dd>
+            <div *ngIf="detalleexpedicionuser.expedicionuserId">
+                <a [routerLink]="['/expedicionuser', detalleexpedicionuser.expedicionuserId]">{{detalleexpedicionuser.expedicionuserNickname}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'detalleexpedicionuser/'+ detalleexpedicionuser.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

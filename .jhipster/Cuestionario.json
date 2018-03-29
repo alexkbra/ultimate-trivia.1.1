@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "cuestionario",
+            "relationshipName": "nivel",
+            "otherEntityName": "nivel",
+            "otherEntityField": "nombre",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "expedicion",
+            "otherEntityName": "expedicion",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "cuestionario"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 4,
+            "fieldValidateRulesMaxlength": 100
+        }
+    ],
+    "changelogDate": "20180329212351",
+    "entityTableName": "cuestionario",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

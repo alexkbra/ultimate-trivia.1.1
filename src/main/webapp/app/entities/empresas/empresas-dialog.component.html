@@ -1,0 +1,191 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmpresasLabel" jhiTranslate="triviaApp.empresas.home.createOrEditLabel">Create or edit a Empresas</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!empresas.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="empresas.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="triviaApp.empresas.razonSocial" for="field_razonSocial">Razon Social</label>
+            <input type="text" class="form-control" name="razonSocial" id="field_razonSocial"
+                [(ngModel)]="empresas.razonSocial" required minlength="4" maxlength="200" />
+            <div [hidden]="!(editForm.controls.razonSocial?.dirty && editForm.controls.razonSocial?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.razonSocial?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.razonSocial?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 4 }">
+                   This field is required to be at least 4 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.razonSocial?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                   This field cannot be longer than 200 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="triviaApp.empresas.nit" for="field_nit">Nit</label>
+            <input type="number" class="form-control" name="nit" id="field_nit"
+                [(ngModel)]="empresas.nit" required min="9" max="15" />
+            <div [hidden]="!(editForm.controls.nit?.dirty && editForm.controls.nit?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nit?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nit?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 9 }">
+                    This field should be at least 9.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nit?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 15 }">
+                    This field cannot be more than 15.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nit?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="triviaApp.empresas.digitoVerificacion" for="field_digitoVerificacion">Digito Verificacion</label>
+            <input type="number" class="form-control" name="digitoVerificacion" id="field_digitoVerificacion"
+                [(ngModel)]="empresas.digitoVerificacion" required min="1" max="2" />
+            <div [hidden]="!(editForm.controls.digitoVerificacion?.dirty && editForm.controls.digitoVerificacion?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.digitoVerificacion?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.digitoVerificacion?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 1 }">
+                    This field should be at least 1.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.digitoVerificacion?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 2 }">
+                    This field cannot be more than 2.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.digitoVerificacion?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="triviaApp.empresas.telefono" for="field_telefono">Telefono</label>
+            <input type="number" class="form-control" name="telefono" id="field_telefono"
+                [(ngModel)]="empresas.telefono" required min="7" max="15" />
+            <div [hidden]="!(editForm.controls.telefono?.dirty && editForm.controls.telefono?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.telefono?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.telefono?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 7 }">
+                    This field should be at least 7.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.telefono?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 15 }">
+                    This field cannot be more than 15.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.telefono?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="triviaApp.empresas.telefonoContacto" for="field_telefonoContacto">Telefono Contacto</label>
+            <input type="number" class="form-control" name="telefonoContacto" id="field_telefonoContacto"
+                [(ngModel)]="empresas.telefonoContacto" min="7" max="15" />
+            <div [hidden]="!(editForm.controls.telefonoContacto?.dirty && editForm.controls.telefonoContacto?.invalid)">
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.telefonoContacto?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 7 }">
+                    This field should be at least 7.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.telefonoContacto?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 15 }">
+                    This field cannot be more than 15.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.telefonoContacto?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="triviaApp.empresas.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="empresas.email" maxlength="100" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+            <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.email?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.email?.errors?.pattern" jhiTranslate="entity.validation.pattern" translateValues="{ pattern: 'Email' }">
+                    This field should follow pattern for "Email".
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="triviaApp.empresas.direccion" for="field_direccion">Direccion</label>
+            <input type="text" class="form-control" name="direccion" id="field_direccion"
+                [(ngModel)]="empresas.direccion" maxlength="500" />
+            <div [hidden]="!(editForm.controls.direccion?.dirty && editForm.controls.direccion?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.direccion?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 500 }">
+                   This field cannot be longer than 500 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="triviaApp.empresas.paginaWeb" for="field_paginaWeb">Pagina Web</label>
+            <input type="text" class="form-control" name="paginaWeb" id="field_paginaWeb"
+                [(ngModel)]="empresas.paginaWeb" maxlength="500" />
+            <div [hidden]="!(editForm.controls.paginaWeb?.dirty && editForm.controls.paginaWeb?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.paginaWeb?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 500 }">
+                   This field cannot be longer than 500 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="triviaApp.empresas.fechaRegistro" for="field_fechaRegistro">Fecha Registro</label>
+            <div class="input-group">
+                <input id="field_fechaRegistro" type="text" class="form-control" name="fechaRegistro" ngbDatepicker  #fechaRegistroDp="ngbDatepicker" [(ngModel)]="empresas.fechaRegistro"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="fechaRegistroDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.fechaRegistro?.dirty && editForm.controls.fechaRegistro?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.fechaRegistro?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div [hidden]="!(editForm.controls.publicidad?.dirty && editForm.controls.publicidad?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.publicidad?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

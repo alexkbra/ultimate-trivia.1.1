@@ -1,0 +1,26 @@
+{
+    "triviaApp": {
+        "publicidad" : {
+            "home": {
+                "title": "Publicidads",
+                "createLabel": "Crear nuevo Publicidad",
+                "createOrEditLabel": "Crear o editar Publicidad"
+            },
+            "created": "Un nuevo Publicidad ha sido creado con el identificador {{ param }}",
+            "updated": "Un Publicidad ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Publicidad ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Publicidad {{ id }}?"
+            },
+            "detail": {
+                "title": "Publicidad"
+            },
+            "titulo": "Titulo",
+            "descripcion": "Descripcion",
+            "premiodescripcion": "Premiodescripcion",
+            "galeria": "Galeria",
+            "empresas": "Empresas",
+            "nivel": "Nivel"
+        }
+    }
+}

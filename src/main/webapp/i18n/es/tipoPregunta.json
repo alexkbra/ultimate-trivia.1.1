@@ -1,0 +1,10 @@
+{
+    "triviaApp": {
+        "TipoPregunta" : {
+            "null": "",
+            "ABIERTAS": "ABIERTAS",
+            "UNICARESPUESTA": "UNICARESPUESTA",
+            "SELECCIONMULTIPLE": "SELECCIONMULTIPLE"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "triviaApp": {
+        "expedicionuser" : {
+            "home": {
+                "title": "Expedicionusers",
+                "createLabel": "Crear nuevo Expedicionuser",
+                "createOrEditLabel": "Crear o editar Expedicionuser"
+            },
+            "created": "Un nuevo Expedicionuser ha sido creado con el identificador {{ param }}",
+            "updated": "Un Expedicionuser ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Expedicionuser ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Expedicionuser {{ id }}?"
+            },
+            "detail": {
+                "title": "Expedicionuser"
+            },
+            "nickname": "Nickname",
+            "fechaRegistro": "Fecha Registro",
+            "detalleexpedicionuser": "Detalleexpedicionuser",
+            "userid": "Userid",
+            "expedicion": "Expedicion"
+        }
+    }
+}
